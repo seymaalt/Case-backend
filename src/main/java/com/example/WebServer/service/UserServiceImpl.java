@@ -19,11 +19,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public String addUser(User user) {
         if (!userRepository.existsByTcNo(user.getTcNo())) {
-            user.setTcNo(user.getTcNo());
-            user.setName(user.getName());
-            user.setSurname(user.getSurname());
-            user.setAge(user.getAge());
-            user.setGender(user.getGender());
             userRepository.save(user);
         }else {
             throw new CustomException("Tc No is already in use", HttpStatus.UNPROCESSABLE_ENTITY);
